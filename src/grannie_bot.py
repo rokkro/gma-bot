@@ -1,7 +1,7 @@
 import tweepy
 from src.config import config
 from os.path import dirname,abspath
-from src.analyze import form_phrase
+from src.text_parse import form_phrase
 import random
 
 auth = tweepy.OAuthHandler(config['TWITTER']['ckey'], config['TWITTER']['csecret'])
