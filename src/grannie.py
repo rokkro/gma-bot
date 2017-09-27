@@ -23,7 +23,7 @@ def text_get(text_content):
     intro = get_lines("intro.txt")
     ending = get_lines("end.txt")
     text = text_content
-    result = form_phrase(intro, text, ending, check_words=True, capitalized=random.choice([True,False]))
+    result = form_phrase(intro, text, ending, check_words=True, capitalized=random.choice([True,False]), extras=random.choice([True,False]))
     print(result)
 
-text_get("asdf")
+text_get("test")

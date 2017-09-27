@@ -61,7 +61,7 @@ class langParse():
         return words
 
 
-def form_phrase(intro, text, end, check_words=True, capitalized=False):
+def form_phrase(intro, text, end,extras, check_words=True, capitalized=False):
     langp = langParse(text)
     pluralizer = inflect.engine()
     # Get a list of all verbs
@@ -75,8 +75,8 @@ def form_phrase(intro, text, end, check_words=True, capitalized=False):
     # Get a list of all adjectives
     adjectives = langp.types["JJ"]
     # Get a list of synonyms of the verbs/nouns
-    v_syns = langp.find_syns(verbs,"v",False)
-    n_syns = langp.find_syns(present_nouns,"n",False)
+    v_syns = langp.find_syns(verbs,"v",extras)
+    n_syns = langp.find_syns(present_nouns,"n",extras)
     if check_words: # Verify the found words are valid
         v_syns = [i for i in v_syns if i in langp.verbs]
         n_syns = [i for i in n_syns if i in langp.nouns]
