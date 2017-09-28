@@ -26,4 +26,4 @@ def text_get(text_content):
     result = form_phrase(intro, text, ending, check_words=True, capitalized=random.choice([True,False]), extras=random.choice([True,False]))
     print(result)
 
-text_get("test")
+text_get("i like pie")

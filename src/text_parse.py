@@ -3,7 +3,8 @@ from src.config import config
 from nltk.corpus import  wordnet
 from random import choice
 import inflect
-dependency_parser = StanfordDependencyParser(path_to_jar=config['JARS']['stanford-parser'], path_to_models_jar=config['JARS']['stanford-parser-models'])
+
+dependency_parser = StanfordDependencyParser(path_to_jar=config['JAVA']['stanford-parser'].strip(), path_to_models_jar=config['JAVA']['stanford-parser-models'].strip())
 
 class langParse():
     def __init__(self, sentence):
