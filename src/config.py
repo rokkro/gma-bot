@@ -8,6 +8,6 @@ config = configparser.ConfigParser()
 config.read(dirname(dirname(abspath(__file__))) + "/config.ini")
 
 
-java_path = config['JAVA']['java-path']
+java_path = config['JAVA']['java-path'].strip()
 if java_path:
     environ['JAVAHOME'] = java_path
