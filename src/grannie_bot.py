@@ -2,13 +2,10 @@ import tweepy
 from src.config import config
 from os.path import dirname,abspath
 from src.text_parse import form_phrase
+from src.twitter import stream, tweet_status
+import re
 import random
-
-auth = tweepy.OAuthHandler(config['TWITTER']['ckey'], config['TWITTER']['csecret'])
-auth.set_access_token(config['TWITTER']['atoken'],config['TWITTER']['asecret'])
-
-#Initialize tweepy api with authentication keys
-api = tweepy.API(auth,wait_on_rate_limit=True,wait_on_rate_limit_notify=True)
+from time import sleep
 
 def get_lines(filename):
     items = []
@@ -24,6 +21,27 @@ def text_get(text_content):
     ending = get_lines("end.txt")
     text = text_content
     result = form_phrase(intro, text, ending, check_words=True, capitalized=random.choice([True,False]), extras=random.choice([True,False]))
-    print(result)
+    return result
 
-text_get("i like pie")
+def get_a_tweet():
+    while True:
+        search = random.choice(get_lines("bot_focus.txt"))
+        print(search)
+        tweet = stream([search],[])
+        tweet_id = tweet['id']
+        tweet_text = tweet['text']
+        tweet_user = tweet['user']['screen_name']
+        tweet_text = tweet_text.replace("@","").replace("#","").replace("\n","")
+        tweet_text = re.sub(r"http\S+", "", tweet_text)
+
+        print(tweet_text)
+        result = text_get(tweet_text)
+        print(result)
+        if result is None:
+            sleep(5)
+        else:
+            tweet_status(tweet_user, result, tweet_id)
+            sleep(5)
+
+
+get_a_tweet()
