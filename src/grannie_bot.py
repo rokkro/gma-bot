@@ -18,7 +18,7 @@ def text_get(text_content):
     intro = get_lines("intro.txt")
     ending = get_lines("end.txt")
     text = text_content
-    result = form_phrase(intro, text, ending, check_words=True, capitalized=random.choice([True,False]), extras=random.choice([True,False]))
+    result = form_phrase(intro, text, ending, check_words=True, capitalized=random.choice([True,False]), extras=False)
     return result
 
 def get_a_tweet():
@@ -26,9 +26,7 @@ def get_a_tweet():
         search = random.choice(get_lines("bot_focus.txt"))
         print(search)
         tweet = stream([search],[])
-        tweet_id = tweet['id']
         tweet_text = tweet['text']
-        tweet_user = tweet['user']['screen_name']
         tweet_text = tweet_text.replace("@","").replace("#","").replace("\n","")
         tweet_text = re.sub(r"http\S+", "", tweet_text)
 
@@ -36,8 +34,9 @@ def get_a_tweet():
         result = text_get(tweet_text)
         print(result)
         if result is None:
-            sleep(5)
+            continue
         else:
+            result = result.replace("n't","")
             tweet_status(result, search)
             sleep(1800)
 

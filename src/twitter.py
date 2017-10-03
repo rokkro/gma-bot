@@ -57,8 +57,5 @@ def stream(terms, user):
             continue
 
 def tweet_status(content,hashtag):
-    import random
-    if random.choice([True,False]):
-        api.update_status("#" + hashtag + " " + content)
-    else:
-        api.update_status(content)
+
+    api.update_status(content)
