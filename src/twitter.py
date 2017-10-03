@@ -56,5 +56,9 @@ def stream(terms, user):
             print("Error: ",e," Attempting to continue...",end='')
             continue
 
-def tweet_status(user,content,id):
-    api.update_status("@" + user + " " + content,id)
+def tweet_status(content,hashtag):
+    import random
+    if random.choice([True,False]):
+        api.update_status("#" + hashtag + " " + content)
+    else:
+        api.update_status(content)

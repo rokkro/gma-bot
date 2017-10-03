@@ -1,5 +1,3 @@
-import tweepy
-from src.config import config
 from os.path import dirname,abspath
 from src.text_parse import form_phrase
 from src.twitter import stream, tweet_status
@@ -40,8 +38,8 @@ def get_a_tweet():
         if result is None:
             sleep(5)
         else:
-            tweet_status(tweet_user, result, tweet_id)
-            sleep(5)
+            tweet_status(result, search)
+            sleep(1800)
 
 
 get_a_tweet()
