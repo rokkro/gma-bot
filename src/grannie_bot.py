@@ -17,6 +17,7 @@ def get_lines(filename):
 def text_get(text_content):
     intro = get_lines("intro.txt")
     ending = get_lines("end.txt")
+    print(ending)
     text = text_content
     result = form_phrase(intro, text, ending, check_words=True, capitalized=random.choice([True,False]), extras=False)
     return result
@@ -39,6 +40,5 @@ def get_a_tweet():
             result = result.replace("n't","")
             tweet_status(result, search)
             sleep(1800)
-
 
 get_a_tweet()

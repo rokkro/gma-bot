@@ -57,5 +57,4 @@ def stream(terms, user):
             continue
 
 def tweet_status(content,hashtag):
-
     api.update_status(content)

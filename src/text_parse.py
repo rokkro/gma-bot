@@ -62,7 +62,7 @@ class langParse():
         return words
 
 
-def form_phrase(intro, text, end,extras, check_words=True, capitalized=False):
+def form_phrase(intro, text, end,extras, check_words=True, capitalized=False, must_have_verb_and_noun=True):
     langp = langParse(text)
     pluralizer = inflect.engine()
     # Get a list of all verbs
@@ -83,8 +83,9 @@ def form_phrase(intro, text, end,extras, check_words=True, capitalized=False):
         n_syns = [i for i in n_syns if i in langp.nouns]
     # Make the noun synonyms plural
     n_syns = [pluralizer.plural(i) for i in n_syns]
-
-    result_phrase = (choice(intro) if intro else "") + (" " + choice(adverbs) if adverbs else "") + (" " + choice(v_syns) if v_syns else "") + (" " + (choice(adjectives) + " " if adjectives else "") + choice(["#",""]) + choice(n_syns) if n_syns else "") + choice(end)
+    if not must_have_verb_and_noun or (not v_syns or not n_syns):
+        return
+    result_phrase = (choice(intro) if intro else "") + (" " + choice(adverbs) if adverbs else "") + (" " + choice(v_syns) if v_syns else "") + (" " + (choice(adjectives) + " " if adjectives else "") + "#" + choice(n_syns) if n_syns else "") + choice(end)
     if capitalized:
         result_phrase = result_phrase.upper()
     return result_phrase
