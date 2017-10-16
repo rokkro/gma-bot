@@ -1,6 +1,6 @@
 from os.path import dirname,abspath
-from src.text_parse import form_phrase
-from src.twitter import stream, tweet_status
+from text_parse import form_phrase
+from twitter import stream, tweet_status
 import re
 import random
 from time import sleep
