@@ -15,7 +15,7 @@ The bot will re-assemble a sentence like so:
 [random intro text] [adverb] [verb] [adjective] [# (50% chance of this appearing)] [noun] [random ending text].
 
 
-The new tweet will be tweeted. 
+The new tweet will be tweeted every 5 minutes to 4 hours.
 
 
 This bot cannot reply to the original tweet because of Twitter's rules.
