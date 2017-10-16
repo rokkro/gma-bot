@@ -1,5 +1,5 @@
 from nltk.parse.stanford import StanfordDependencyParser
-from src.config import config
+from config import config
 from nltk.corpus import  wordnet
 from random import choice
 import inflect
