@@ -34,8 +34,12 @@ def get_a_tweet():
         tweet_text = re.sub(r"http\S+", "", tweet_text)
 
         print(tweet_text)
-        result = text_get(tweet_text)
-        print(result)
+        try:
+            result = text_get(tweet_text)
+            print(result)
+        except UnicodeEncodeError as e:
+            print(e)
+            continue
         if result is None:
             continue
         else:
