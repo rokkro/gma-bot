@@ -25,6 +25,8 @@ def text_get(text_content):
 def get_a_tweet():
     while True:
         search = random.choice(get_lines("bot_focus.txt"))
+        if not search:
+            continue
         print(search)
         tweet = stream([search],[])
         tweet_text = tweet['text']
