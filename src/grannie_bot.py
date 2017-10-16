@@ -41,7 +41,7 @@ def get_a_tweet():
         else:
             result = result.replace("n't","")
             tweet_status(result, search)
-            sleep_time = choice(range(300,14400))
+            sleep_time = random.choice(range(300,14400))
             print("Sleeping for",sleep_time)
             sleep(sleep_time)
 
