@@ -19,5 +19,3 @@ The new tweet will be tweeted every 5 minutes to 4 hours.
 
 
 This bot cannot reply to the original tweet because of Twitter's rules.
-
-todo at some point: auto follow people.
